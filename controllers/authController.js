@@ -75,7 +75,7 @@ exports.googleLogin = async (req, res) => {
         sub: `test_google_id_${token}`
       };
     } else {
-      // Real Google authentication
+
       const ticket = await client.verifyIdToken({
         idToken: token,
         audience: process.env.GOOGLE_CLIENT_ID,
@@ -110,7 +110,7 @@ exports.forgotPassword = async (req, res) => {
 
     const resetToken = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
     user.resetPasswordToken = resetToken;
-    user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
+    user.resetPasswordExpires = Date.now() + 3600000; 
     await user.save();
 
     await sendResetPasswordEmail(user.email, resetToken);

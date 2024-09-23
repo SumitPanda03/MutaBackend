@@ -6,5 +6,6 @@ const authMiddleware = require('../middleware/auth');
 router.post('/', authMiddleware, orderController.createOrder);
 router.get('/', authMiddleware, orderController.getOrders);
 router.get('/:id', authMiddleware, orderController.getOrderById);
+router.post('/checkout', authMiddleware, orderController.checkoutOrders);
 
 module.exports = router;
