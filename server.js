@@ -28,7 +28,7 @@ app.use('/api/users', rateLimitMiddleware, userRoutes);
 app.use('/api/orders', rateLimitMiddleware, orderRoutes);
 
 app.get('/',(req,res) => {
-    res.json('Main Page');
+    res.json('Main Page Backend');
 })
 
 app.use(errorHandler);
