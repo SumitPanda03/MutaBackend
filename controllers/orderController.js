@@ -67,7 +67,7 @@ exports.checkoutOrders = async (req, res) => {
     const userEmail = req.user.email;
 
     const orders = await Order.find({ user: userId });
-
+    
     if (orders.length === 0) {
       return res.status(400).json({ message: 'No unpaid orders found' });
     }
@@ -86,7 +86,6 @@ exports.checkoutOrders = async (req, res) => {
     );
     
     const invoicePdf = await generateCombinedInvoice(orders);
-    console.log("Here");
 
     await sendInvoiceEmail(userEmail, invoicePdf);
 

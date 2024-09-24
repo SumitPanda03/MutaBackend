@@ -33,7 +33,6 @@ exports.sendResetPasswordEmail = async (email, token) => {
 };
 
 exports.sendInvoiceEmail = async (email, pdfBuffer) => {
-  console.log("invoice mail: ",email)
 
   const mailOptions = {
     from: process.env.EMAIL_FROM,
